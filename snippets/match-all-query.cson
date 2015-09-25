@@ -1,0 +1,4 @@
+'.source.elasticsearch2.query':
+  'Match All Query':
+    'prefix': 'match_all'
+    'body': '"match_all": {${1:"boost": 1.2}}$2'
