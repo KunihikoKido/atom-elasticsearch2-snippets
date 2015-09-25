@@ -1,4 +1,4 @@
-# elasticsearch-2-snippets package
+# elasticsearch2-snippets package
 
 A short description of your package.
 
