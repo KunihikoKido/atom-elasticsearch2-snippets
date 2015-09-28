@@ -1,6 +1,6 @@
 {
   "name": "elasticsearch2-snippets",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Elasticsearch 2.x Snippets",
   "keywords": [
     "elasticsearch",
