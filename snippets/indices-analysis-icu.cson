@@ -1,0 +1,52 @@
+'.source.elasticsearch2.indices':
+  'ICU Normalization Token Filter':
+    'prefix': 'tokenfilter:icu_normalizer'
+    'body': """
+      "${1:my_icu_normalizer}": {
+        "type": "icu_normalizer",
+        "name": "${2:nfkc_cf}",
+        "mode": "${3:compose}"
+      }$4
+    """
+  'ICU Folding Token Filter':
+    'prefix': 'tokenfilter:icu_folding'
+    'body': """
+      "${1:my_icu_folding}": {
+        "type": "icu_folding",
+        "unicodeSetFilter": "${2:[^åäöÅÄÖ]}"
+      }$3
+    """
+  'ICU Collation Token Filter':
+    'prefix': 'tokenfilter:icu_collation'
+    'body': """
+      "${1:my_icu_collation}": {
+        "type": "icu_collation",
+        "language": "${2:en}",
+        "strength": "${3:tertiary}",
+        "decomposition": "${4:no}"
+      }$5
+    """
+  'ICU Tokenizer':
+    'prefix': 'tokenizer:icu_tokenizer'
+    'body': """
+      "${1:my_icu_tokenizer}": {
+        "type": "icu_tokenizer"
+      }$2
+    """
+  'ICU Normalization Char Filter':
+    'prefix': 'charfilter:icu_normalizer'
+    'body': """
+      "${1:my_icu_normalizer}": {
+        "type": "icu_normalizer",
+        "name": "${2:nfkc_cf}",
+        "mode": "${3:compose}"
+      }$4
+    """
+  'ICU Transform Token Filter':
+    'prefix': 'tokenfilter:icu_transform'
+    'body': """
+      "${1:my_icu_transform}": {
+        "type": "icu_transform",
+        "id": "${2:Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC}"
+      }$3
+    """
