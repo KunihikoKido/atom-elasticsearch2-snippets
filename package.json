@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "description": "Elasticsearch 2.x Snippets",
   "keywords": [
+    "elasticsearch",
+    "snippets"
   ],
   "repository": "https://github.com/KunihikoKido/atom-elasticsearch2-snippets",
   "license": "MIT",
