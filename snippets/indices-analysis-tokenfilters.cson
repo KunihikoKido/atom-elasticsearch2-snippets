@@ -2,14 +2,14 @@
   'Standard Token Filter':
     'prefix': 'tokenfilter:standard'
     'body': """
-      "${1:my_standard_token_filter}": {
+      "${1:my_standard}": {
         "type": "standard"
       }
     """
   'ASCII Folding Token Filter':
     'prefix': 'tokenfilter:asciifolding'
     'body': """
-      "${1:my_asciifolding_token_filter}": {
+      "${1:my_asciifolding}": {
         "type": "asciifolding",
         "preserve_original": ${2:true}
       }$3
@@ -17,7 +17,7 @@
   'Length Token Filter':
     'prefix': 'tokenfilter:length'
     'body': """
-      "${1:my_length_token_filter}": {
+      "${1:my_length}": {
         "type": "length",
         "min": ${2:0},
         "max": ${3:2147483647}
@@ -26,7 +26,7 @@
   'Lowercase Token Filter':
     'prefix': 'tokenfilter:lowercase'
     'body': """
-      "${1:my_lowercase_token_filter}": {
+      "${1:my_lowercase}": {
         "type": "lowercase",
         "language": "${2:greek}"
       }$3
@@ -34,14 +34,14 @@
   'Uppercase Token Filter':
     'prefix': 'tokenfilter:uppercase'
     'body': """
-      "${1:my_uppercase_token_filter}": {
+      "${1:my_uppercase}": {
         "type": "uppercase"
       }$2
     """
   'NGram Token Filter':
     'prefix': 'tokenfilter:uppercase'
     'body': """
-      "${1:my_ngram_token_filter}": {
+      "${1:my_ngram}": {
         "type": "nGram",
         "min_gram": ${2:1},
         "max_gram": ${3:2}
@@ -50,7 +50,7 @@
   'Edge NGram Token Filter':
     'prefix': 'tokenfilter:edgengram'
     'body': """
-      "${1:my_edge_ngram_token_filter}": {
+      "${1:my_edge_ngram}": {
         "type": "edgeNGram",
         "min_gram": ${2:1},
         "max_gram": ${3:2},
@@ -60,14 +60,14 @@
   'Porter Stem Token Filter':
     'prefix': 'tokenfilter:porter_stem'
     'body': """
-      "${1:my_porter_stem_token_filter}": {
+      "${1:my_porter_stem}": {
         "type": "porter_stem"
       }$2
     """
   'Shingle Stem Token Filter':
     'prefix': 'tokenfilter:shingle'
     'body': """
-      "${1:my_shingle_token_filter}": {
+      "${1:my_shingle}": {
         "type": "shingle",
         "max_shingle_size": ${2:2},
         "min_shingle_size": ${3:2},
@@ -80,7 +80,7 @@
   'Stop Token Filter':
     'prefix': 'tokenfilter:stop'
     'body': """
-      "${1:my_stop_token_filter}": {
+      "${1:my_stop}": {
         "type": "stop",
         "stopwords": "${2:_english_}",
         "stopwords_path": "$3",
@@ -91,7 +91,7 @@
   'Word Delimiter Token Filter':
     'prefix': 'tokenfilter:word_delimiter'
     'body': """
-      "${1:my_word_delimiter_token_filter}": {
+      "${1:my_word_delimiter}": {
         "type": "word_delimiter",
         "generate_word_parts": ${2:true},
         "generate_number_parts": ${3:true},
@@ -110,7 +110,7 @@
   'Stemmer Token Filter':
     'prefix': 'tokenfilter:stemmer'
     'body': """
-      "${1:my_stemmer_token_filter}": {
+      "${1:my_stemmer}": {
         "type": "stemmer",
         "name": "${2:light_german}"
       }$3
@@ -118,7 +118,7 @@
   'Stemmer Override Token Filter':
     'prefix': 'tokenfilter:stemmer_override'
     'body': """
-      "${1:my_stemmer_override_token_filter}": {
+      "${1:my_stemmer_override}": {
         "type": "stemmer_override",
         "rules": [${2:}],
         "rules_path": "${3:analysis/custom_stems.txt}"
@@ -127,7 +127,7 @@
   'Keyword Marker Token Filter':
     'prefix': 'tokenfilter:keyword_marker'
     'body': """
-      "${1:my_keyword_marker_token_filter}": {
+      "${1:my_keyword_marker}": {
         "type": "keyword_marker",
         "keywords": [$2],
         "keywords_path": "${3:analysis/protwords.txt}",
@@ -137,21 +137,21 @@
   'Keyword Repeat Token Filter':
     'prefix': 'tokenfilter:keyword_repeat'
     'body': """
-      "${1:my_keyword_repeat_token_filter}": {
+      "${1:my_keyword_repeat}": {
         "type": "keyword_repeat"
       }$2
     """
   'KStem Token Filter':
     'prefix': 'tokenfilter:kstem'
     'body': """
-      "${1:my_kstem_token_filter}": {
+      "${1:my_kstem}": {
         "type": "kstem"
       }$2
     """
   'Snowball Token Filter':
     'prefix': 'tokenfilter:snowball'
     'body': """
-      "${1:my_snowball_token_filter}": {
+      "${1:my_snowball}": {
         "type": "snowball",
         "language": "${Lovins}"
       }$2
@@ -159,7 +159,7 @@
   'Phonetic Token Filter':
     'prefix': 'tokenfilter:phonetic'
     'body': """
-      "${1:my_phonetic_token_filter}": {
+      "${1:my_phonetic}": {
         "type": "phonetic",
         "encoder" : "${2:metaphone}",
         "replace" : ${3:false}
@@ -168,7 +168,7 @@
   'Synonym Token Filter':
     'prefix': 'tokenfilter:synonym'
     'body': """
-      "${1:my_synonym_token_filter}": {
+      "${1:my_synonym}": {
         "type": "synonym",
         "synonyms": [${2:"i-pod, i pod => ipod", "universe, cosmos"}],
         "synonyms_path": "${3:analysis/synonym.txt}"
@@ -177,7 +177,7 @@
   'Compound Word Token Filter':
     'prefix': 'tokenfilter:compound_word'
     'body': """
-      "${1:my_compound_word_token_filter}": {
+      "${1:my_compound_word}": {
         "type": "${2:hyphenation_decompounder|dictionary_decompounder}",
         "word_list": [${3:"one", "two", "three"}],
         "word_list_path": "${4:path/to/words.txt}",
@@ -191,14 +191,14 @@
   'Reverse Token Filter':
     'prefix': 'tokenfilter:reverse'
     'body': """
-      "${1:my_reverse_token_filter}": {
+      "${1:my_reverse}": {
         "type": "reverse"
       }$2
     """
   'Elision Token Filter':
     'prefix': 'tokenfilter:elision'
     'body': """
-      "${1:my_elision_token_filter}": {
+      "${1:my_elision}": {
         "type": "elision",
         "articles": [${2:"l", "m", "t", "qu", "n", "s", "j"}]
       }$3
@@ -206,7 +206,7 @@
   'Truncate Token Filter':
     'prefix': 'tokenfilter:truncate'
     'body': """
-      "${1:my_truncate_token_filter}": {
+      "${1:my_truncate}": {
         "type": "truncate",
         "length": ${2:10}
       }$3
@@ -214,7 +214,7 @@
   'Unique Token Filter':
     'prefix': 'tokenfilter:unique'
     'body': """
-      "${1:my_unique_token_filter}": {
+      "${1:my_unique}": {
         "type": "unique",
         "only_on_same_position": ${2:true}
       }$3
@@ -222,7 +222,7 @@
   'Pattern Capture Token Filter':
     'prefix': 'tokenfilter:pattern_capture'
     'body': """
-      "${1:my_pattern_capture_token_filter}": {
+      "${1:my_pattern_capture}": {
         "type": "pattern_capture",
         "preserve_original": ${2:true},
         "patterns": [
@@ -234,7 +234,7 @@
   'Pattern Replice Token Filter':
     'prefix': 'tokenfilter:pattern_replace'
     'body': """
-      "${1:my_pattern_replace_token_filter}": {
+      "${1:my_pattern_replace}": {
         "type": "pattern_replace",
         "pattern": "$2",
         "replacement": "$3"
@@ -243,14 +243,14 @@
   'Trim Token Filter':
     'prefix': 'tokenfilter:trim'
     'body': """
-      "${1:my_trim_token_filter}": {
+      "${1:my_trim}": {
         "type": "trim"
       }$2
     """
   'Limit Token Count Token Filter':
     'prefix': 'tokenfilter:limit'
     'body': """
-      "${1:my_limit_token_filter}": {
+      "${1:my_limit}": {
         "type": "limit",
         "max_token_count": ${2:1},
         "consume_all_tokens": ${3:false}
@@ -259,7 +259,7 @@
   'Hunspell Token Filter':
     'prefix': 'tokenfilter:hunspell'
     'body': """
-      "${1:my_hunspell_token_filter}": {
+      "${1:my_hunspell}": {
         "type": "hunspell",
         "locale": "${2:en_US}",
         "dedup": ${3:true},
@@ -269,7 +269,7 @@
   'Common Grams Token Filter':
     'prefix': 'tokenfilter:common_grams'
     'body': """
-      "${1:my_common_grams_token_filter}": {
+      "${1:my_common_grams}": {
         "type": "common_grams",
         "common_words": [${2:"a", "an", "the"}],
         "common_words_path": "$3",
@@ -280,21 +280,21 @@
   'Normalization Token Filter':
     'prefix': 'tokenfilter:normalization'
     'body': """
-      "${1:my_normalization_token_filter}": {
+      "${1:my_normalization}": {
         "type": "${2:arabic_normalization|german_normalization|hindi_normalization|indic_normalization|sorani_normalization|persian_normalization|scandinavian_normalization|scandinavian_folding|not-released-yet[serbian_normalization]}"
       }$3
     """
   'CJK Width Token Filter':
     'prefix': 'tokenfilter:cjk_width'
     'body': """
-      "${1:my_cjk_width_token_filter}": {
+      "${1:my_cjk_width}": {
         "type": "cjk_width"
       }$2
     """
   'CJK Bigram Token Filter':
     'prefix': 'tokenfilter:cjk_bigram'
     'body': """
-      "${1:my_cjk_bigram_token_filter}": {
+      "${1:my_cjk_bigram}": {
         "type": "cjk_bigram",
         "ignore_scripts": [${2:"hiragana", "katakana", "hangul"}],
         "output_unigrams": ${3:true}
@@ -303,7 +303,7 @@
   'Delimited Payload Token Filter':
     'prefix': 'tokenfilter:delimited_payload_filter'
     'body': """
-      "${1:my_delimited_payload_filter_token_filter}": {
+      "${1:my_delimited_payload_filter}": {
         "type": "delimited_payload_filter",
         "delimiter": "${2:|}",
         "encoding": "${3:float}"
@@ -312,7 +312,7 @@
   'Keep Words Token Filter':
     'prefix': 'tokenfilter:keep'
     'body': """
-      "${1:my_keep_token_filter}": {
+      "${1:my_keep}": {
         "type": "keep",
         "keep_words": [${2:"one", "two", "three"}],
         "keep_words_path": "${3:/path/to/words.txt}",
@@ -322,7 +322,7 @@
   'Keep Types Token Filter':
     'prefix': 'tokenfilter:keep_types'
     'body': """
-      "${1:my_keep_types_token_filter}": {
+      "${1:my_keep_types}": {
         "type": "keep_types",
         "types": [${2:"<NUM>"}]
       }$3
@@ -330,14 +330,14 @@
   'Classic Token Filter':
     'prefix': 'tokenfilter:classic'
     'body': """
-      "${1:my_classic_token_filter}": {
+      "${1:my_classic}": {
         "type": "classic"
       }$2
     """
   'Apostrophe Token Filter':
     'prefix': 'tokenfilter:apostrophe'
     'body': """
-      "${1:my_apostrophe_token_filter}": {
+      "${1:my_apostrophe}": {
         "type": "apostrophe"
       }$2
     """
