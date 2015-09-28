@@ -1,0 +1,8 @@
+'.source.elasticsearch2.query':
+  'Aggregation Metadata':
+    'prefix': 'aggs:meta'
+    'body': """
+      "meta": {
+        "${1:color}": "${2:blue}"$3
+      }$4
+    """
