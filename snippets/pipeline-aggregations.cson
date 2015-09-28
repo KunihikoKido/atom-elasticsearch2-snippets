@@ -1,0 +1,86 @@
+'.source.elasticsearch2.query':
+  'Avg Bucket Aggregation':
+    'prefix': 'aggs:avg_bucket'
+    'body': """
+      "avg_bucket": {
+        "buckets_path": "${1:the_sum}"
+      }$2
+    """
+  'Derivative Aggregation':
+    'prefix': 'aggs:derivative'
+    'body': """
+      "derivative": {
+        "buckets_path": "${1:the_sum}"
+      }$2
+    """
+  'Max Bucket Aggregation':
+    'prefix': 'aggs:max_bucket'
+    'body': """
+      "max_bucket": {
+        "buckets_path": "${1:the_sum}"
+      }$2
+    """
+  'Min Bucket Aggregation':
+    'prefix': 'aggs:min_bucket'
+    'body': """
+      "min_bucket": {
+        "buckets_path": "${1:the_sum}"
+      }$2
+    """
+  'Sum Bucket Aggregation':
+    'prefix': 'aggs:sum_bucket'
+    'body': """
+      "sum_bucket": {
+        "buckets_path": "${1:the_sum}"
+      }$2
+    """
+  'Moving Average Aggregation':
+    'prefix': 'aggs:moving_avg'
+    'body': """
+      "moving_avg": {
+        "buckets_path": "${1:the_sum}",
+        "model": "${2:holt}",
+        "window": ${3:5},
+        "gap_policy": "${4:insert_zero}",
+        "settings": {
+          "alpha": ${5:0.8}
+        }
+      }$6
+    """
+  'Cumulative Sum Aggregation':
+    'prefix': 'aggs:cumulative_sum'
+    'body': """
+      "cumulative_sum": {
+        "buckets_path": "${1:the_sum}"
+      }$2
+    """
+  'Bucket Script Aggregation':
+    'prefix': 'aggs:bucket_script'
+    'body': """
+      "bucket_script": {
+        "buckets_path": {
+          "${1:my_var1}": "${2:the_sum}",
+          "${3:my_var2}": "${4:the_value_count}"
+        },
+        "script": "${5:my_var1 / my_var2}"
+      }$6
+    """
+  'Bucket Selector Aggregation':
+    'prefix': 'aggs:bucket_selector'
+    'body': """
+      "bucket_selector": {
+        "buckets_path": {
+          "${1:my_var1}": "${2:the_sum}",
+          "${3:my_var2}": "${4:the_value_count}"
+        },
+        "script": "${5:my_var1 > my_var2}"
+      }$6
+    """
+  'Serial Differencing Aggregation':
+    'prefix': 'aggs:serial_diff'
+    'body': """
+      "serial_diff": {
+        "buckets_path": "${1:the_sum}",
+        "lag": "${2:7}"
+      }$3
+    """
