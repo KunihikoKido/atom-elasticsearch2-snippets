@@ -1,0 +1,365 @@
+'.source.elasticsearch2.mapping, .source.elasticsearch2.indices':
+  'Example Mapping':
+    'prefix': 'mappings'
+    'body': """
+      {
+        "mappings": {
+          "user": {
+            "_all": {
+              "enabled": false
+            },
+            "properties": {
+              "title": {"type": "string"},
+              "name": {"type": "string"},
+              "age": {"type": "integer"}
+            }
+          },
+          "blogpost": {
+            "properties": {
+              "title": {"type": "string"},
+              "body": {"type": "string"},
+              "user_id": {
+                "type": "string",
+                "index": "not_analyzed"
+              },
+              "created": {
+                "type": "date",
+                "format": "strict_date_optional_time||epoch_millis"
+              }
+            }
+          }
+        }
+      }
+    """
+  'String datatype':
+    'prefix': 'string'
+    'body': """
+      "${1:full_name}": {
+        "type": "string"$2
+      }$3
+    """
+  'Numeric datatype':
+    'prefix': 'numeric'
+    'body': """
+      "${1:price}": {
+        "type": "${2:long|integer|short|byte|double|float}"$2
+      }$3
+    """
+  'Date datatype':
+    'prefix': 'date'
+    'body': """
+      "${1:date}": {
+        "type": "date",
+        "format": "${2:yyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis}"$3
+      }$4
+    """
+  'Boolean datatype':
+    'prefix': 'date'
+    'body': """
+      "${1:is_published}": {
+        "type": "boolean"$2
+      }$3
+    """
+  'Binary datatype':
+    'prefix': 'binary'
+    'body': """
+      "${1:blob}": {
+        "type": "binary"$2
+      }$3
+    """
+  'Object datatype':
+    'prefix': 'object'
+    'body': """
+      "${1:user}": {
+        "properties": {
+          ${2:"first": \\{"type": "string"\\}},
+          ${3:"last": \\{"type": "string"\\}}$4
+        }
+      }$5
+    """
+  "Nested datatype":
+    'prefix': 'nested'
+    'body': """
+      "${1:user}": {
+        "type": "nested",
+        "properties": {
+          ${2:"first": \\{"type": "string"\\}},
+          ${3:"last": \\{"type": "string"\\}}$4
+        }
+      }$5
+    """
+  "Geo-point datatype":
+    'prefix': 'geo_point'
+    'body': """
+      "${1:location}": {
+        "type": "geo_point"$2
+      }$3
+    """
+  "Geo-Shape datatype":
+    'prefix': 'geo_shape'
+    'body': """
+      "${1:location}": {
+        "type": "geo_shape",
+        "tree": "${2:quadtree}",
+        "precision": "${3:1m}"$4
+      }$6
+    """
+  "IPv4 datatype":
+    'prefix': 'ip'
+    'body': """
+      "${1:ip_addr}": {
+        "type": "ip"$2
+      }$3
+    """
+  "Completion datatype":
+    'prefix': 'completion'
+    'body': """
+      "${1:suggest}": {
+        "type": "completion",
+        "analyzer": "${2:simple}",
+        "search_analyzer": "${3:simple}",
+        "payloads": ${4:true}
+      }$5
+    """
+  "Token count datatype":
+    'prefix': 'token_count'
+    'body': """
+      "${1:length}": {
+        "type": "token_count",
+        "analyzer": "${2:standard}"
+      }$3
+    """
+  "Attachment datatype":
+    'prefix': 'attachment'
+    'body': """
+      "${1:my_attachment}": {
+        "type": "attachment"$2
+      }$3
+    """
+  "Muti-fields":
+    'prefix': 'fields'
+    'body': """
+      "fields": {
+        ${1:"raw": \\{"type": "string", "index": "not_analyzed"\\}}$2
+      }$3
+    """
+  "Muti-fields":
+    'prefix': 'fields'
+    'body': """
+      "fields": {
+        ${1:"raw": \\{"type": "string", "index": "not_analyzed"\\}}$2
+      }$3
+    """
+  "_all field":
+    'prefix': 'meta:_all'
+    'body': """
+      "_all": {
+        "enabled": ${1:true},
+        "store": ${2:true}
+      }$2
+    """
+  "_meta field":
+    'prefix': 'meta:_meta'
+    'body': """
+      "_meta": {
+        "class": "MyApp::User",
+        "version": {
+          "min": "1.0",
+          "max": "1.3"
+        }
+      }$2
+    """
+  "_parent field":
+    'prefix': 'meta:_parent'
+    'body': """
+      "_parent": {
+        "type": "${1:my_parent}"
+      }
+    """
+  "_routing field":
+    'prefix': 'meta:_routing'
+    'body': """
+      "_routing": {
+        "required": ${1:true}
+      }
+    """
+  "_source field":
+    'prefix': 'meta:_source'
+    'body': """
+      "_source": {
+        ${1:"enabled": false},
+        ${2:"includes": ["title", "tags"]},
+        ${3:"excludes": ["description"]}
+      }$4
+    """
+  "_timestamp field":
+    'prefix': 'meta:_timestamp'
+    'body': """
+      "_timestamp": {
+        "enabled": ${1:true}
+      }$2
+    """
+  "_ttl field":
+    'prefix': 'meta:_ttl'
+    'body': """
+      "_ttl": {
+        "enabled": ${1:true},
+        "default": "${2:5m}"
+      }$3
+    """
+  "analyzer":
+    'prefix': 'param:analyzer'
+    'body': '"analyzer": "${1:english}"$2'
+  "boost":
+    'prefix': 'param:boost'
+    'body': '"boost": ${1:2}$2'
+  "coerce":
+    'prefix': 'param:coerce'
+    'body': '"coerce": ${1:false}$2'
+  "copy_to":
+    'prefix': 'param:copy_to'
+    'body': '"copy_to": "${1:full_name}"$2'
+  "doc_values":
+    'prefix': 'param:doc_values'
+    'body': '"doc_values": ${1:false}$2'
+  "dynamic":
+    'prefix': 'param:dynamic'
+    'body': '"dynamic": ${1:true}$2'
+  "enabled":
+    'prefix': 'param:enabled'
+    'body': '"enabled": ${1:false}$2'
+  "fielddata":
+    'prefix': 'param:fielddata'
+    'body': """
+      "fielddata": {
+        "format": "${1:disabled}"$2
+      }$3
+    """
+  "format":
+    'prefix': 'param:format'
+    'body': '"format": "${1:yyy-MM-dd}"$2'
+  "geohash":
+    'prefix': 'param:geohash'
+    'body': '"geohash": ${1:true}$2'
+  "geohash_precision":
+    'prefix': 'param:geohash_precision'
+    'body': '"geohash_precision": ${1:6}$2'
+  "geohash_prefix":
+    'prefix': 'param:geohash_prefix'
+    'body': '"geohash_prefix": ${1:true}$2'
+  "ignore_above":
+    'prefix': 'param:ignore_above'
+    'body': '"ignore_above": ${1:20}$2'
+  "ignore_malformed":
+    'prefix': 'param:ignore_malformed'
+    'body': '"ignore_malformed": ${1:true}$2'
+  "include_in_all":
+    'prefix': 'param:include_in_all'
+    'body': '"include_in_all": ${1:false}$2'
+  "index":
+    'prefix': 'param:index'
+    'body': '"index": "${1:not_analyzed}"$2'
+  "index_options":
+    'prefix': 'param:index_options'
+    'body': '"index_options": "${1:offsets}"$2'
+  "lat_lon":
+    'prefix': 'param:lat_lon'
+    'body': '"lat_lon": ${1:true}$2'
+  "fields":
+    'prefix': 'param:fields'
+    'body': """
+      "fields": {
+        ${1:"raw": \\{"type": "string", "index": "not_analyzed"\\}}$2
+      }$3
+    """
+  "norms":
+    'prefix': 'param:norms'
+    'body': '"norms": ${1:true}$2'
+  "null_value":
+    'prefix': 'param:null_value'
+    'body': '"null_value": "${1:NULL}"$2'
+  "position_increment_gap":
+    'prefix': 'param:position_increment_gap'
+    'body': '"position_increment_gap": ${1:50}$2'
+  "precision_step":
+    'prefix': 'param:precision_step'
+    'body': '"precision_step": ${1:16}$2'
+  "properties":
+    'prefix': 'param:properties'
+    'body': """
+      "properties": {
+        ${1:"age": \\{"type": "integer"\\}}
+      }$2
+    """
+  "search_analyzer":
+    'prefix': 'param:search_analyzer'
+    'body': '"search_analyzer": "${1:standard}"$2'
+  "similarity":
+    'prefix': 'param:similarity'
+    'body': '"similarity": "${1:BM25}"$2'
+  "store":
+    'prefix': 'param:store'
+    'body': '"store": ${1:true}$2'
+  "term_vector":
+    'prefix': 'param:term_vector'
+    'body': '"term_vector": "${1:yes|no|with_positions|with_offsets|with_positions_offsets}"$2'
+  "_default_ mapping":
+    'prefix': '_default_'
+    'body': """
+      "_default_": {
+        ${1:"_all": {"enabled": true}}
+      }$2
+    """
+  "Dynamic templates":
+    'prefix': 'dynamic_templates'
+    'body': """
+      "dynamic_templates": [
+        {
+          "integers": {
+            "match_mapping_type": "long",
+            "mapping": {
+              "type": "integer"
+            }
+          }
+        },
+        {
+          "strings": {
+            "match_mapping_type": "string",
+            "mapping": {
+              "type": "string",
+              "fields": {
+                "raw": {
+                  "type": "string",
+                  "index": "not_analyzed",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        }
+      ]
+    """
+  "match_mapping_type":
+    'prefix': 'dynamic_templates:match_mapping_type'
+    'body': '"match_mapping_type": "${1:string}"$2'
+  "match":
+    'prefix': 'dynamic_templates:match'
+    'body': '"match": "${1:long_*}"$2'
+  "unmatch":
+    'prefix': 'dynamic_templates:unmatch'
+    'body': '"match": "${1:*_text}"$2'
+  "match_pattern":
+    'prefix': 'dynamic_templates:match_pattern'
+    'body': '"match_pattern": "${1:^profit_.+$}"$2'
+  "path_match":
+    'prefix': 'dynamic_templates:path_match'
+    'body': '"path_match": "${1:name.*}"$2'
+  "path_unmatch":
+    'prefix': 'dynamic_templates:path_unmatch'
+    'body': '"path_unmatch": "${1:*.middle}"$2'
+  "{name}":
+    'prefix': 'dynamic_templates:{name}'
+    'body': '"analyzer": "{name}"$2'
+  "{dynamic_type}":
+    'prefix': 'dynamic_templates:{dynamic_type}'
+    'body': '"type": "{dynamic_type}"$2'

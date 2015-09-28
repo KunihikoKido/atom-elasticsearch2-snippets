@@ -1,0 +1,9 @@
+'scopeName': 'source.elasticsearch2.indices'
+'fileTypes': [
+]
+'name': 'Elasticsearch 2.x (Indices)'
+'patterns': [
+  {
+    'include': 'source.json'
+  }
+]
