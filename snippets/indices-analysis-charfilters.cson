@@ -7,3 +7,19 @@
         "mappings": [${2:"ph=>f", "qu=>k"}]
       }$3
     """
+  'HTML Strip Char Filter':
+    'prefix': 'charfilter:html_strip'
+    'body': """
+      "${1:my_html_strip}": {
+        "type": "html_strip"
+      }$2
+    """
+  'Pattern Replace Char Filter':
+    'prefix': 'charfilter:pattern_replace'
+    'body': """
+      "${1:my_pattern_replace}": {
+        "type": "pattern_replace",
+        "pattern": "${2:sample(.*)}",
+        "replacement": "${3:replacedSample $1}"
+      }$4
+    """
