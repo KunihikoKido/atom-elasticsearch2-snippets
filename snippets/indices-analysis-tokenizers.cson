@@ -1,0 +1,445 @@
+'.source.elasticsearch2.indices':
+  'Standard Tokenizer':
+    'prefix': 'tokenizer:standard'
+    'body': """
+      "${1:my_standard_tokenizer}": {
+        "type": "standard",
+        "max_token_length": ${2:255}
+      }$3
+    """
+  'Edge NGram Tokenizer':
+    'prefix': 'tokenizer:standard'
+    'body': """
+      "${1:my_edge_ngram_tokenizer}": {
+        "type": "edgeNGram",
+        "min_gram": ${2:1},
+        "max_gram": ${3:2},
+        "token_chars": [${4:"letter", "digit"}],
+      }$5
+    """
+  'Keyword Tokenizer':
+    'prefix': 'tokenizer:keyword'
+    'body': """
+      "${1:my_keyword_tokenizer}": {
+        "type": "keyword",
+        "buffer_size": ${2:256}
+      }$3
+    """
+  'Letter Tokenizer':
+    'prefix': 'tokenizer:letter'
+    'body': """
+      "${1:my_letter_tokenizer}": {
+        "type": "letter"
+      }$2
+    """
+  'Lowercase Tokenizer':
+    'prefix': 'tokenizer:lowercase'
+    'body': """
+      "${1:my_lowercase_tokenizer}": {
+        "type": "lowercase"
+      }$2
+    """
+  'NGram Tokenizer':
+    'prefix': 'tokenizer:nGram'
+    'body': """
+      "${1:my_ngram_tokenizer}": {
+        "type": "nGram",
+        "min_gram": ${2:2},
+        "max_gram": ${3:3},
+        "token_chars": [${4:"letter", "digit"}],
+      }$5
+    """
+  'Whitespace Tokenizer':
+    'prefix': 'tokenizer:whitespace'
+    'body': """
+      "${1:my_whitespace_tokenizer}": {
+        "type": "whitespace"
+      }$2
+    """
+  'Pattern Tokenizer':
+    'prefix': 'tokenizer:pattern'
+    'body': """
+      "${1:my_pattern_tokenizer}": {
+        "type": "pattern",
+        "pattern": "${2:\\\\\\\\\\W+}",
+        "flags": "${3:CASE_INSENSITIVE|COMMENTS}",
+        "group": ${4:-1}
+      }$5
+    """
+  'UAX Email URL Tokenizer':
+    'prefix': 'tokenizer:uax_url_email'
+    'body': """
+      "${1:my_uax_url_email_tokenizer}": {
+        "type": "uax_url_email",
+        "max_token_length": ${2:255}
+      }$2
+    """
+  'Path Hierarchy Tokenizer':
+    'prefix': 'tokenizer:path_hierarchy'
+    'body': """
+      "${1:my_path_hierarchy_tokenizer}": {
+        "type": "path_hierarchy",
+        "delimiter": "${2:/}",
+        "replacement" "${3:/}",
+        "buffer_size": ${4:1024},
+        "reverse": ${5:false},
+        "skip": ${6:0}
+      }$7
+    """
+  'Classic Tokenizer':
+    'prefix': 'tokenizer:classic'
+    'body': """
+      "${1:my_classic_tokenizer}": {
+        "type": "classic",
+        "max_token_length": ${2:255}
+      }$3
+    """
+  'Thai Tokenizer':
+    'prefix': 'tokenizer:thai'
+    'body': """
+      "${1:my_thai_tokenizer}": {
+        "type": "thai"
+      }$3
+    """
+  'Standard Token Filter':
+    'prefix': 'tokenfilter:standard'
+    'body': """
+      "${1:my_standard_token_filter}": {
+        "type": "standard"
+      }
+    """
+  'ASCII Folding Token Filter':
+    'prefix': 'tokenfilter:asciifolding'
+    'body': """
+      "${1:my_asciifolding_token_filter}": {
+        "type": "asciifolding",
+        "preserve_original": ${2:true}
+      }$3
+    """
+  'Length Token Filter':
+    'prefix': 'tokenfilter:length'
+    'body': """
+      "${1:my_length_token_filter}": {
+        "type": "length",
+        "min": ${2:0},
+        "max": ${3:2147483647}
+      }$4
+    """
+  'Lowercase Token Filter':
+    'prefix': 'tokenfilter:lowercase'
+    'body': """
+      "${1:my_lowercase_token_filter}": {
+        "type": "lowercase",
+        "language": "${2:greek}"
+      }$3
+    """
+  'Uppercase Token Filter':
+    'prefix': 'tokenfilter:uppercase'
+    'body': """
+      "${1:my_uppercase_token_filter}": {
+        "type": "uppercase"
+      }$2
+    """
+  'NGram Token Filter':
+    'prefix': 'tokenfilter:uppercase'
+    'body': """
+      "${1:my_ngram_token_filter}": {
+        "type": "nGram",
+        "min_gram": ${2:1},
+        "max_gram": ${3:2}
+      }$4
+    """
+  'Edge NGram Token Filter':
+    'prefix': 'tokenfilter:edgengram'
+    'body': """
+      "${1:my_edge_ngram_token_filter}": {
+        "type": "edgeNGram",
+        "min_gram": ${2:1},
+        "max_gram": ${3:2},
+        "side": "${4:front}"
+      }$5
+    """
+  'Porter Stem Token Filter':
+    'prefix': 'tokenfilter:porter_stem'
+    'body': """
+      "${1:my_porter_stem_token_filter}": {
+        "type": "porter_stem"
+      }$2
+    """
+  'Shingle Stem Token Filter':
+    'prefix': 'tokenfilter:shingle'
+    'body': """
+      "${1:my_shingle_token_filter}": {
+        "type": "shingle",
+        "max_shingle_size": ${2:2},
+        "min_shingle_size": ${3:2},
+        "output_unigrams": ${4:true},
+        "output_unigrams_if_no_shingles": ${5:false},
+        "token_separator": "${6: }",
+        "filler_token": "${7:_}"
+      }$8
+    """
+  'Stop Token Filter':
+    'prefix': 'tokenfilter:stop'
+    'body': """
+      "${1:my_stop_token_filter}": {
+        "type": "stop",
+        "stopwords": "${2:_english_}",
+        "stopwords_path": "$3",
+        "ignore_case": ${4:false},
+        "remove_trailing": ${5:true}
+      }$6
+    """
+  'Word Delimiter Token Filter':
+    'prefix': 'tokenfilter:word_delimiter'
+    'body': """
+      "${1:my_word_delimiter_token_filter}": {
+        "type": "word_delimiter",
+        "generate_word_parts": ${2:true},
+        "generate_number_parts": ${3:true},
+        "catenate_words": ${4:false},
+        "catenate_numbers": ${5:false},
+        "catenate_all": ${6:false},
+        "split_on_case_change": ${7:true},
+        "preserve_original": ${8:false},
+        "split_on_numerics": ${9:true},
+        "stem_english_possessive": ${10:true},
+        "protected_words": [$11],
+        "protected_words_path": "$12",
+        "type_table": "$13"
+      }$14
+    """
+  'Stemmer Token Filter':
+    'prefix': 'tokenfilter:stemmer'
+    'body': """
+      "${1:my_stemmer_token_filter}": {
+        "type": "stemmer",
+        "name": "${2:light_german}"
+      }$3
+    """
+  'Stemmer Override Token Filter':
+    'prefix': 'tokenfilter:stemmer_override'
+    'body': """
+      "${1:my_stemmer_override_token_filter}": {
+        "type": "stemmer_override",
+        "rules": [${2:}],
+        "rules_path": "${3:analysis/custom_stems.txt}"
+      }$4
+    """
+  'Keyword Marker Token Filter':
+    'prefix': 'tokenfilter:keyword_marker'
+    'body': """
+      "${1:my_keyword_marker_token_filter}": {
+        "type": "keyword_marker",
+        "keywords": [$2],
+        "keywords_path": "${3:analysis/protwords.txt}",
+        "ignore_case": ${4:false}
+      }$5
+    """
+  'Keyword Repeat Token Filter':
+    'prefix': 'tokenfilter:keyword_repeat'
+    'body': """
+      "${1:my_keyword_repeat_token_filter}": {
+        "type": "keyword_repeat"
+      }$2
+    """
+  'KStem Token Filter':
+    'prefix': 'tokenfilter:kstem'
+    'body': """
+      "${1:my_kstem_token_filter}": {
+        "type": "kstem"
+      }$2
+    """
+  'Snowball Token Filter':
+    'prefix': 'tokenfilter:snowball'
+    'body': """
+      "${1:my_snowball_token_filter}": {
+        "type": "snowball",
+        "language": "${Lovins}"
+      }$2
+    """
+  'Phonetic Token Filter':
+    'prefix': 'tokenfilter:phonetic'
+    'body': """
+      "${1:my_phonetic_token_filter}": {
+        "type": "phonetic",
+        "encoder" : "${2:metaphone}",
+        "replace" : ${3:false}
+      }$4
+    """
+  'Synonym Token Filter':
+    'prefix': 'tokenfilter:synonym'
+    'body': """
+      "${1:my_synonym_token_filter}": {
+        "type": "synonym",
+        "synonyms": [${2:"i-pod, i pod => ipod", "universe, cosmos"}],
+        "synonyms_path": "${3:analysis/synonym.txt}"
+      }$4
+    """
+  'Compound Word Token Filter':
+    'prefix': 'tokenfilter:compound_word'
+    'body': """
+      "${1:my_compound_word_token_filter}": {
+        "type": "${2:hyphenation_decompounder|dictionary_decompounder}",
+        "word_list": [${3:"one", "two", "three"}],
+        "word_list_path": "${4:path/to/words.txt}",
+        "hyphenation_patterns_path": "${5:path/to/fop.xml}",
+        "min_word_size": ${6:5},
+        "min_subword_size": ${7:2},
+        "max_subword_size": ${8:15},
+        "only_longest_match": ${9:false}
+      }$10
+    """
+  'Reverse Token Filter':
+    'prefix': 'tokenfilter:reverse'
+    'body': """
+      "${1:my_reverse_token_filter}": {
+        "type": "reverse"
+      }$2
+    """
+  'Elision Token Filter':
+    'prefix': 'tokenfilter:elision'
+    'body': """
+      "${1:my_elision_token_filter}": {
+        "type": "elision",
+        "articles": [${2:"l", "m", "t", "qu", "n", "s", "j"}]
+      }$3
+    """
+  'Truncate Token Filter':
+    'prefix': 'tokenfilter:truncate'
+    'body': """
+      "${1:my_truncate_token_filter}": {
+        "type": "truncate",
+        "length": ${2:10}
+      }$3
+    """
+  'Unique Token Filter':
+    'prefix': 'tokenfilter:unique'
+    'body': """
+      "${1:my_unique_token_filter}": {
+        "type": "unique",
+        "only_on_same_position": ${2:true}
+      }$3
+    """
+  'Pattern Capture Token Filter':
+    'prefix': 'tokenfilter:pattern_capture'
+    'body': """
+      "${1:my_pattern_capture_token_filter}": {
+        "type": "pattern_capture",
+        "preserve_original": ${2:true},
+        "patterns": [
+          "${3:(\\\\\\\\\\p{Ll}+|\\\\\\\\\\p{Lu}\\\\\\\\\\p{Ll}+|\\\\\\\\\\p{Lu}+)}",
+          "${4:(\\\\\\\\\\d+)}"
+        ]
+      }$5
+    """
+  'Pattern Replice Token Filter':
+    'prefix': 'tokenfilter:pattern_replace'
+    'body': """
+      "${1:my_pattern_replace_token_filter}": {
+        "type": "pattern_replace",
+        "pattern": "$2",
+        "replacement": "$3"
+      }$4
+    """
+  'Trim Token Filter':
+    'prefix': 'tokenfilter:trim'
+    'body': """
+      "${1:my_trim_token_filter}": {
+        "type": "trim"
+      }$2
+    """
+  'Limit Token Count Token Filter':
+    'prefix': 'tokenfilter:limit'
+    'body': """
+      "${1:my_limit_token_filter}": {
+        "type": "limit",
+        "max_token_count": ${2:1},
+        "consume_all_tokens": ${3:false}
+      }$4
+    """
+  'Hunspell Token Filter':
+    'prefix': 'tokenfilter:hunspell'
+    'body': """
+      "${1:my_hunspell_token_filter}": {
+        "type": "hunspell",
+        "locale": "${2:en_US}",
+        "dedup": ${3:true},
+        "longest_only": ${4:false}
+      }$5
+    """
+  'Common Grams Token Filter':
+    'prefix': 'tokenfilter:common_grams'
+    'body': """
+      "${1:my_common_grams_token_filter}": {
+        "type": "common_grams",
+        "common_words": [${2:"a", "an", "the"}],
+        "common_words_path": "$3",
+        "ignore_case": ${4:false},
+        "query_mode": ${5:false}
+      }$6
+    """
+  'Normalization Token Filter':
+    'prefix': 'tokenfilter:normalization'
+    'body': """
+      "${1:my_normalization_token_filter}": {
+        "type": "${2:arabic_normalization|german_normalization|hindi_normalization|indic_normalization|sorani_normalization|persian_normalization|scandinavian_normalization|scandinavian_folding|not-released-yet[serbian_normalization]}"
+      }$3
+    """
+  'CJK Width Token Filter':
+    'prefix': 'tokenfilter:cjk_width'
+    'body': """
+      "${1:my_cjk_width_token_filter}": {
+        "type": "cjk_width"
+      }$2
+    """
+  'CJK Bigram Token Filter':
+    'prefix': 'tokenfilter:cjk_bigram'
+    'body': """
+      "${1:my_cjk_bigram_token_filter}": {
+        "type": "cjk_bigram",
+        "ignore_scripts": [${2:"hiragana", "katakana", "hangul"}],
+        "output_unigrams": ${3:true}
+      }$4
+    """
+  'Delimited Payload Token Filter':
+    'prefix': 'tokenfilter:delimited_payload_filter'
+    'body': """
+      "${1:my_delimited_payload_filter_token_filter}": {
+        "type": "delimited_payload_filter",
+        "delimiter": "${2:|}",
+        "encoding": "${3:float}"
+      }$4
+    """
+  'Keep Words Token Filter':
+    'prefix': 'tokenfilter:keep'
+    'body': """
+      "${1:my_keep_token_filter}": {
+        "type": "keep",
+        "keep_words": [${2:"one", "two", "three"}],
+        "keep_words_path": "${3:/path/to/words.txt}",
+        "keep_words_case": ${4:false}
+      }$5
+    """
+  'Keep Types Token Filter':
+    'prefix': 'tokenfilter:keep_types'
+    'body': """
+      "${1:my_keep_types_token_filter}": {
+        "type": "keep_types",
+        "types": [${2:"<NUM>"}]
+      }$3
+    """
+  'Classic Token Filter':
+    'prefix': 'tokenfilter:classic'
+    'body': """
+      "${1:my_classic_token_filter}": {
+        "type": "classic"
+      }$2
+    """
+  'Apostrophe Token Filter':
+    'prefix': 'tokenfilter:apostrophe'
+    'body': """
+      "${1:my_apostrophe_token_filter}": {
+        "type": "apostrophe"
+      }$2
+    """
