@@ -1,9 +1,0 @@
-'scopeName': 'source.elasticsearch2.query'
-'fileTypes': [
-]
-'name': 'Elasticsearch 2.x (Query)'
-'patterns': [
-  {
-    'include': 'source.json'
-  }
-]

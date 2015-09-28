@@ -1,4 +1,4 @@
-'.source.elasticsearch2.query':
+'.source.elasticsearch2.search':
   'GeoShape Query':
     'prefix': 'match_all'
     'body': """

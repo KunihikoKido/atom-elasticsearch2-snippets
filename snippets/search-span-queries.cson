@@ -1,4 +1,4 @@
-'.source.elasticsearch2.query':
+'.source.elasticsearch2.search':
   'Span Term Query':
     'prefix': 'span_term'
     'body': """

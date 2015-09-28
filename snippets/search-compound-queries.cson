@@ -1,4 +1,4 @@
-'.source.elasticsearch2.query':
+'.source.elasticsearch2.search':
   'Constant Score Query':
     'prefix': 'constant_score'
     'body': """

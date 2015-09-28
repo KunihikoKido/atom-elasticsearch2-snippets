@@ -1,4 +1,4 @@
-'.source.elasticsearch2.query':
+'.source.elasticsearch2.search':
   'Query context':
     'prefix': 'query'
     'body': '"query": {$1}$2'
