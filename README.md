@@ -5,7 +5,7 @@ Elasticsearch 2.x Snippets.
 ## Grammars
 
 > **Tips:**
-> To see all the available snippets for the file type (Grammar) that you currently have open, you can type ``alt-shift-S``.
+> To see all the available snippets for the file type (the grammar) that you currently have open, you can type ``alt-shift-S``.
 
 ### Elasticsearch 2.x (Search)
 You can use the snippets for Search API (Query DSL, Aggregations and etc).
