@@ -1,0 +1,59 @@
+'.source.elasticsearch2.indices':
+  'kuromoji_iteration_mark Char Filter':
+    'prefix': 'charfilter:kuromoji_iteration_mark'
+    'body': """
+      "${1:my_kuromoji_iteration_mark}": {
+        "type": "kuromoji_iteration_mark",
+        "normalize_kanji": ${2:true},
+        "normalize_kana": ${3:true}
+      }$4
+    """
+  'kuromoji_tokenizer Tokenizer':
+    'prefix': 'tokenizer:kuromoji_tokenizer'
+    'body': """
+      "${1:my_kuromoji_tokenizer}": {
+        "type": "kuromoji_tokenizer",
+        "mode": "${2:normal|search|extended}",
+        "discard_punctuation": ${3:true},
+        "user_dictionary": "${4:/path/to/userdict.txt}"
+      }$5
+    """
+  'kuromoji_baseform Token Filter':
+    'prefix': 'tokenfilter:kuromoji_baseform'
+    'body': """
+      "${1:my_kuromoji_baseform}": {
+        "type": "kuromoji_baseform"
+      }$2
+    """
+  'kuromoji_part_of_speech Token Filter':
+    'prefix': 'tokenfilter:kuromoji_part_of_speech'
+    'body': """
+      "${1:my_kuromoji_part_of_speech}": {
+        "type": "kuromoji_part_of_speech",
+        "stoptags": [${2:"助詞-格助詞-一般", "助詞-終助詞"}]
+      }$3
+    """
+  'kuromoji_readingform Token Filter':
+    'prefix': 'tokenfilter:kuromoji_readingform'
+    'body': """
+      "${1:my_kuromoji_readingform}": {
+        "type": "kuromoji_readingform",
+        "use_romaji": ${2:false}
+      }$3
+    """
+  'kuromoji_stemmer Token Filter':
+    'prefix': 'tokenfilter:kuromoji_stemmer'
+    'body': """
+      "${1:my_kuromoji_stemmer}": {
+        "type": "kuromoji_stemmer",
+        "minimum_length": ${2:4}
+      }$3
+    """
+  'ja_stop Token Filter':
+    'prefix': 'tokenfilter:ja_stop'
+    'body': """
+      "${1:my_ja_stop}": {
+        "type": "ja_stop",
+        "stopwords": [${2:"_japanese_", "ストップ"}]
+      }$3
+    """
