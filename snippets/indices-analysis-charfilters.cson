@@ -1,0 +1,9 @@
+'.source.elasticsearch2.indices':
+  'Mapping Char Filter':
+    'prefix': 'charfilter:mapping'
+    'body': """
+      "${1:my_mapping}": {
+        "type": "mapping",
+        "mappings": [${2:"ph=>f", "qu=>k"}]
+      }$3
+    """
