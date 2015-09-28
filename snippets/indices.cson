@@ -1,0 +1,67 @@
+'.source.elasticsearch2.indices':
+  'Create Index':
+    'prefix': 'create'
+    'body': """
+      {
+        "settings": {
+          "number_of_shards": ${1:5},
+          "number_of_replicas": ${2:1}
+        },
+        "mappings": {$3},
+        "warmers": {$4},
+        "aliases": {$5},
+        "creation_date" : ${6,1407751337000}
+      }$7
+    """
+  'settings':
+    'prefix': 'settings'
+    'body': """
+      "settings": {
+        ${1:"number_of_replicas": 1}
+      }$2
+    """
+  'index.number_of_shards':
+    'prefix': 'index.number_of_shards',
+    'body': '"index.number_of_shards": ${1:5}$2'
+  'index.shard.check_on_startup':
+    'prefix': 'index.shard.check_on_startup',
+    'body': '"index.shard.check_on_startup": ${1:true}$2'
+  'index.codec':
+    'prefix': 'index.codec'
+    'body': """
+      "index.codec": {
+        "postings_format": {
+          "my_format": {
+            "type": "pulsing",
+            "freq_cut_off": "5"
+          }
+        }
+      }
+    """
+  'index.number_of_replicas':
+    'prefix': 'index.number_of_replicas',
+    'body': '"index.number_of_replicas": ${1:1}$2'
+  'index.auto_expand_replicas':
+    'prefix': 'index.auto_expand_replicas',
+    'body': '"index.auto_expand_replicas": ${1:false}$2'
+  'index.refresh_interval':
+    'prefix': 'index.refresh_interval',
+    'body': '"index.refresh_interval": "${1:1s}"$2'
+  'index.blocks.read_only':
+    'prefix': 'index.blocks.read_only',
+    'body': '"index.blocks.read_only": ${1:true}$2'
+  'index.blocks.read':
+    'prefix': 'index.blocks.read',
+    'body': '"index.blocks.read": ${1:true}$2'
+  'index.blocks.write':
+    'prefix': 'index.blocks.write',
+    'body': '"index.blocks.write": ${1:true}$2'
+  'index.blocks.metadata':
+    'prefix': 'index.blocks.metadata',
+    'body': '"index.blocks.metadata": ${1:true}$2'
+  'index.ttl.disable_purge':
+    'prefix': 'index.ttl.disable_purge',
+    'body': '"index.ttl.disable_purge": ${1:true}$2'
+  'index.recovery.initial_shards':
+    'prefix': 'index.recovery.initial_shards',
+    'body': '"index.recovery.initial_shards": "${1:quorum}"$2'

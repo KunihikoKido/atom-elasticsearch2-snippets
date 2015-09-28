@@ -4,6 +4,6 @@
 'name': 'Elasticsearch 2.x (Indices)'
 'patterns': [
   {
-    'include': 'source.json'
+    'include': 'source.js'
   }
 ]
