@@ -12,23 +12,33 @@
   'Bool Query':
     'prefix': 'bool'
     'body': """
-      "bool": {
-        "must": {
-          ${1:"term": \\{"user": "kimchy"\\}}
-        },
-        "filter": {
-          ${2:"term": \\{"tag": "tech"\\}}
-        },
-        "must_not": {
-          ${3:"range": \\{"age": \\{"from": 10,"to": 20\\}\\}}
-        },
-        "should": [
-          ${4:\\{"term": \\{"tag": "wow"\\}\\}},
-          ${5:\\{"term": \\{"tag": "elasticsearch"\\}\\}}
-        ],
-        "minimum_should_match": ${6:1},
-        "boost": ${7:1.0}
-      }$8
+      "bool": {$1}
+    """
+  'must':
+    'prefix': 'must'
+    'body': """
+      "must": [
+        {$1}
+      ]
+    """
+  'must_not':
+    'prefix': 'must_not'
+    'body': """
+      "must_not": [
+        {$1}
+      ]
+    """
+  'should':
+    'prefix': 'should'
+    'body': """
+      'should': [
+        {$1}
+      ]
+    """
+  'minimum_should_match':
+    'prefix': 'minimum_should_match'
+    'body': """
+      "minimum_should_match": ${1:1}
     """
   'Dis Max Query':
     'prefix': 'dis_max'
